@@ -56,6 +56,7 @@ public class FournisseurServiceImplTest {
 		
 		Fournisseur savedFournisseur= fs.addFournisseur(f);
 		fs.deleteFournisseur(savedFournisseur.getIdFournisseur());
+		System.out.println("DELEEETEE SUCCESFULLL****************************************");
 		assertNull(fs.retrieveFournisseur(savedFournisseur.getIdFournisseur()));
 	}
 
