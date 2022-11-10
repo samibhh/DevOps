@@ -28,7 +28,7 @@ public class FournisseurServiceImplTest {
 	}
 	@Test
 	public void testRetrieveAllFournisseurs(){
-		fs.retrieveAllFournisseurs();
+		assertNotNull(fs.retrieveAllFournisseurs());
 	}
 	@Test
 	public void testAddFournisseur() {
