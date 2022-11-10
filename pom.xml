@@ -13,6 +13,12 @@
 	<version>1.0</version>
 	<name>tpAchatProject</name>
 	<description>tpAchatProject</description>
+	 <distributionManagement>
+        <repository>
+            <id>nexus-site</id>
+            <url>http://192.168.108.222:8081/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -76,18 +82,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				  <dependencies>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-surefire-provider</artifactId>
-            <version>1.2.0-M1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.2.0-M1</version>
-        </dependency>
-    </dependencies>
+			
 			</plugin>
 		</plugins>
 	</build>
