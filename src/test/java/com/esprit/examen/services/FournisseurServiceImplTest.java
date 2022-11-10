@@ -1,63 +1,56 @@
 package com.esprit.examen.services;
 
-import static org.junit.Assert.*;
-
-import java.sql.Date;
-
+import com.esprit.examen.entities.Produit;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import com.esprit.examen.entities.CategorieFournisseur;
-import com.esprit.examen.entities.DetailFournisseur;
-import com.esprit.examen.entities.Fournisseur;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class FournisseurServiceImplTest {
 	@Autowired
-	IFournisseurService fs;
-	/*
-	private Fournisseur initF()
-	{
-	    Date date = new Date(0);  
-		DetailFournisseur detailFournisseur=new DetailFournisseur(null, "fournisseur@gmail.com",date,"Tunis","RandomMat", null);
-		Fournisseur f = new Fournisseur(null,"RandomCode","FournisseurTest",CategorieFournisseur.ORDINAIRE,null,null,detailFournisseur);
-		return f;
-	}*/
+	IProduitService ProduitService;
+
 	@Test
-	public void testRetrieveAllFournisseurs(){
-		assertNotNull(fs.retrieveAllFournisseurs());
-	}
-	@Test
-	public void testAddFournisseur() {
-	//	List<Stock> stocks = stockService.retrieveAllStocks();
-	//	int expected=stocks.size();
-		Date date = new Date(0);  
-		DetailFournisseur detailFournisseur=new DetailFournisseur(null, "fournisseur@gmail.com",date,"Tunis","RandomMat", null);
-		Fournisseur f = new Fournisseur(null,"RandomCode","FournisseurTest",CategorieFournisseur.ORDINAIRE,null,null,detailFournisseur);
-		
-		//Fournisseur f=initF();
-		Fournisseur savedFournisseur= fs.addFournisseur(f);
-		
-	//	assertEquals(expected+1, stockService.retrieveAllStocks().size());
-		assertNotNull(savedFournisseur.getLibelle());
-		fs.deleteFournisseur(savedFournisseur.getIdFournisseur());
-		
-	} 
-	
-	@Test
-	public void testDeleteFournissuer() {
-		//Fournisseur f=initF();
-		Date date = new Date(0);  
-		DetailFournisseur detailFournisseur=new DetailFournisseur(null, "fournisseur@gmail.com",date,"Tunis","RandomMat", null);
-		Fournisseur f = new Fournisseur(null,"RandomCode","FournisseurTest",CategorieFournisseur.ORDINAIRE,null,null,detailFournisseur);
-		
-		Fournisseur savedFournisseur= fs.addFournisseur(f);
-		fs.deleteFournisseur(savedFournisseur.getIdFournisseur());
-		assertNull(fs.retrieveFournisseur(savedFournisseur.getIdFournisseur()));
+	public void testAddProduit() {
+		List<Produit> Produits = ProduitService.retrieveAllProduits();
+		int expected=Produits.size();
+		Produit s = new Produit(null,"Produit code","Produit",23,null,null,null,null,null);
+		Produit savedProduit= ProduitService.addProduit(s);
+
+		assertEquals(expected+1, ProduitService.retrieveAllProduits().size());
+		assertNotNull(savedProduit.getIdProduit());
+		ProduitService.deleteProduit(savedProduit.getIdProduit());
+
 	}
 
-	
+	@Test
+	public void testAddProduitOptimized() {
+
+		Produit s = new Produit(null,"Produit code","Produit",23,null,null,null,null,null);
+		Produit savedProduit= ProduitService.addProduit(s);
+		assertNotNull(savedProduit.getIdProduit());
+		assertSame("Produit code", savedProduit.getCodeProduit());
+		assertNotEquals(0,savedProduit.getPrix());
+		ProduitService.deleteProduit(savedProduit.getIdProduit());
+
+	}
+
+
+	@Test
+	public void testDeleteProduit() {
+		Produit s = new Produit(null,"Produit code","Produit",23,null,null,null,null,null);
+		Produit savedProduit= ProduitService.addProduit(s);
+		ProduitService.deleteProduit(savedProduit.getIdProduit());
+		assertNull(ProduitService.retrieveProduit(savedProduit.getIdProduit()));
+	}
+
+
 }
