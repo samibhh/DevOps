@@ -18,14 +18,14 @@ import com.esprit.examen.entities.Fournisseur;
 public class FournisseurServiceImplTest {
 	@Autowired
 	IFournisseurService fs;
-	
+	/*
 	private Fournisseur initF()
 	{
 	    Date date = new Date(0);  
 		DetailFournisseur detailFournisseur=new DetailFournisseur(null, "fournisseur@gmail.com",date,"Tunis","RandomMat", null);
 		Fournisseur f = new Fournisseur(null,"RandomCode","FournisseurTest",CategorieFournisseur.ORDINAIRE,null,null,detailFournisseur);
 		return f;
-	}
+	}*/
 	@Test
 	public void testRetrieveAllFournisseurs(){
 		assertNotNull(fs.retrieveAllFournisseurs());
@@ -34,7 +34,11 @@ public class FournisseurServiceImplTest {
 	public void testAddFournisseur() {
 	//	List<Stock> stocks = stockService.retrieveAllStocks();
 	//	int expected=stocks.size();
-		Fournisseur f=initF();
+		Date date = new Date(0);  
+		DetailFournisseur detailFournisseur=new DetailFournisseur(null, "fournisseur@gmail.com",date,"Tunis","RandomMat", null);
+		Fournisseur f = new Fournisseur(null,"RandomCode","FournisseurTest",CategorieFournisseur.ORDINAIRE,null,null,detailFournisseur);
+		
+		//Fournisseur f=initF();
 		Fournisseur savedFournisseur= fs.addFournisseur(f);
 		
 	//	assertEquals(expected+1, stockService.retrieveAllStocks().size());
@@ -45,7 +49,11 @@ public class FournisseurServiceImplTest {
 	
 	@Test
 	public void testDeleteFournissuer() {
-		Fournisseur f=initF();
+		//Fournisseur f=initF();
+		Date date = new Date(0);  
+		DetailFournisseur detailFournisseur=new DetailFournisseur(null, "fournisseur@gmail.com",date,"Tunis","RandomMat", null);
+		Fournisseur f = new Fournisseur(null,"RandomCode","FournisseurTest",CategorieFournisseur.ORDINAIRE,null,null,detailFournisseur);
+		
 		Fournisseur savedFournisseur= fs.addFournisseur(f);
 		fs.deleteFournisseur(savedFournisseur.getIdFournisseur());
 		assertNull(fs.retrieveFournisseur(savedFournisseur.getIdFournisseur()));
