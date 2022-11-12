@@ -18,7 +18,7 @@ import com.esprit.examen.entities.DetailFournisseur;
 import com.esprit.examen.entities.Fournisseur;
 import com.esprit.examen.entities.SecteurActivite;
 import com.mysql.cj.log.Log;
-@ExtendWith(MockitoExtension.class)
+@RunWith(SpringRunner.class)
 @SpringBootTest
 public class FournisseurServiceImplTest {
 	@Mock
