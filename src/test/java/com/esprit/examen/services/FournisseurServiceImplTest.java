@@ -21,9 +21,9 @@ import com.mysql.cj.log.Log;
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest
 public class FournisseurServiceImplTest {
-	@Autowired
+	@Mock
 	IFournisseurService fs;
-	@Autowired
+	@Mock
 	ISecteurActiviteService sas;
 	
 	private Fournisseur initF()
