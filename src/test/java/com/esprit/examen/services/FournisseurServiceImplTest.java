@@ -21,9 +21,9 @@ import com.mysql.cj.log.Log;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class FournisseurServiceImplTest {
-	@Mock
+	@Autowired
 	IFournisseurService fs;
-	@Mock
+	@Autowired
 	ISecteurActiviteService sas;
 	
 	private Fournisseur initF()
